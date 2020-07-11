@@ -1,19 +1,21 @@
 import React,{ useContext} from 'react'
 import { GlobalContext } from '../context/GlobalState';
+import { Transaction } from '../Transaction';
+
 export const TransactionList = () => {
-  const context = useContext(GlobalContext);
+  const {transactions} = useContext(GlobalContext);
 
-  console.log(context);
+  // console.log(context);
     return (
-        <>
-            <h3>History</h3>
-            <ul className="list">
-                {/* Later this will be replaced with transaction component */}
-         <li className="minus">
-          Cash <span>-$400</span><button className="delete-btn">x</button>
-        </li> 
-      </ul>
-
-        </>
-    )
+      <>
+        <h3>History</h3>
+        <ul className="list">
+          {transactions.map((transactions) => (
+            <Transaction/>
+            
+          ))}
+          {/* Later this will be replaced with transaction component */}
+        </ul>
+      </>
+    );
 }
